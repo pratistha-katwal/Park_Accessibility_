@@ -1,0 +1,43 @@
+# ==============================
+# Generated outputs (DO NOT TRACK)
+# ==============================
+outputs/
+NA_outputs/
+*.gpkg
+*.geojson
+*.shp
+*.dbf
+*.shx
+*.cpg
+*.prj
+*.html  
+
+# ==============================
+# OSMnx / requests cache
+# ==============================
+.cache/
+cache/
+osmnx_cache/
+
+# ==============================
+# Python
+# ==============================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+
+# ==============================
+# Poetry
+# ==============================
+.venv/
+.env
+poetry.toml
+
+# ==============================
+# OS / Editor
+# ==============================
+.DS_Store
+.vscode/
+.idea/
