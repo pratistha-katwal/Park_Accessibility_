@@ -166,14 +166,9 @@ pytest
 - **Modular Design:** Separate modules for KD-Tree and Network Analysis
 - **Data Pipeline:** Automated data download → processing → analysis → visualization
 - **Reproducibility:** Deterministic outputs with version-controlled dependencies
-
-**Extensibility**
-- **City Selection:** Modify `CITY_NAME` in main.py for different locations
-- **Threshold Adjustment:** Customize distance thresholds (500m/1500m)
-
 - **Branch History:** The KD-Tree and Network Analysis workflows were developed in separate Git branches for independent testing and optimization before merging into the main branch.
 - **Reproducibility:** All outputs are static and deterministic, ensuring reproducible results across runs.
-- **Scalability:** Both methods are designed to scale from neighborhood to city-level analysis.
+
 
 ## 📈 Applications & Use Cases
 
