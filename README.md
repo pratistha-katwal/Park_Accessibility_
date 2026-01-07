@@ -1,5 +1,5 @@
 
-# 🌳 Park Accessibility Analysis: KD-Tree and Network Analysis
+#  Park Accessibility Analysis: KD-Tree and Network Analysis
 
 This repository presents a Python toolkit for evaluating urban park accessibility using two spatial approaches: **KD-Tree-based Euclidean distance** and **network-based walking distance** analysis. This project generates reproducible outputs suitable for urban planning applications.
 
@@ -7,7 +7,7 @@ This repository presents a Python toolkit for evaluating urban park accessibilit
 
 Urban green spaces are crucial for public health, climate resilience, and environmental equity. This project provides methods to quantify and visualize park accessibility at the building level.
 
-## 🧠 Methodological Approaches
+##  Methodological Approaches
 
 ### 1️⃣ **KD-Tree-Based Accessibility (Euclidean Distance)**
 The KD-tree approach is used to identify and visualize parks that lie within a 500 m straight-line (Euclidean) distance from residential buildings.
@@ -25,7 +25,7 @@ The network-based approach evaluates park accessibility using pedestrian street 
 - **Limitations:** Computationally more expensive
 - **Best for:** Planning, policy applications, and detailed assessments
 
-## 📍 Data Sources
+##  Data Sources
 
 - **Administrative boundaries:** PDOK (Kadaster, Netherlands) – municipality boundaries via WFS
 - **Parks:** OpenStreetMap (`leisure=park`)
@@ -121,17 +121,17 @@ python main.py
 
 ## 📊 Results Interpretation - Amsterdam Case Study Results
 
-### 🏙 **Data Overview**
+###  **Data Overview**
 - Total buildings: 197,057
 - Buildings with park access within 1500 m: 190,120 (96.5%)
 - Buildings without park access within 1500 m: 6,937 (3.5%)
 
-### 📏 **Distance Statistics (Walking Distance)**
+###  **Distance Statistics (Walking Distance)**
 - Minimum distance to nearest park: 0.0 m
 - Maximum distance to nearest park: 1,499.76 m
 - Mean distance to nearest park: 469.95 m
 
-## 🌍 Viewing Interactive Maps
+##  Viewing Interactive Maps
 
 ### Local Viewing
 ```bash
@@ -142,7 +142,7 @@ open outputs/KDoutput/accessibility_map.html
 open outputs/NA_outputs/amsterdam_park_accessibility.html
 ```
 
-## 🧪 Testing
+##  Testing
 
 Run unit tests to ensure robustness:
 ```bash
@@ -162,7 +162,7 @@ pytest
 | **Poetry** | Dependency management |
 | **PyTest** | Testing framework |
 
-## 🔧 Development Notes
+##  Development Notes
 
 **Project Architecture**
 - **Modular Design:** Separate modules for KD-Tree and Network Analysis
@@ -172,7 +172,7 @@ pytest
 - **Reproducibility:** All outputs are static and deterministic, ensuring reproducible results across runs.
 
 
-## 📈 Applications & Use Cases
+##  Applications & Use Cases
 
 - **Urban Planning:** Identify accessibility gaps and prioritize park development
 - **Public Health:** Correlate park access with health outcomes
