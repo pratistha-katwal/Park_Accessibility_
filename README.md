@@ -1,21 +1,23 @@
 
 # 🌳 Park Accessibility Analysis: KD-Tree vs Network Analysis
 
-A comprehensive Python toolkit for evaluating urban park accessibility using two complementary spatial approaches: **KD-Tree-based Euclidean distance** and **network-based walking distance** analysis. This project generates static, reproducible outputs suitable for web hosting and urban planning applications.
+This repository presents a Python toolkit for evaluating urban park accessibility using two spatial approaches: **KD-Tree-based Euclidean distance** and **network-based walking distance** analysis. This project generates reproducible outputs suitable for urban planning applications.
 
 ## 📋 Overview
 
-Urban green spaces are crucial for public health, climate resilience, and environmental equity. This project provides methods to quantify and visualize park accessibility at the building level, enabling comparisons between simplified Euclidean distances and realistic walking routes.
+Urban green spaces are crucial for public health, climate resilience, and environmental equity. This project provides methods to quantify and visualize park accessibility at the building level.
 
 ## 🧠 Methodological Approaches
 
 ### 1️⃣ **KD-Tree-Based Accessibility (Euclidean Distance)**
-**Objective:** Fast nearest-park identification using straight-line distances.
+The KD-tree approach is used to identify and visualize parks that lie within a 500 m straight-line (Euclidean) distance from residential buildings.
+**Objective:** Fast identification of accessible park using straight-line distances.
 - **Advantages:** Extremely fast, scales well to city-level datasets
 - **Limitations:** Doesn't account for street networks or barriers
 - **Best for:** Exploratory analysis and comparative studies
 
 ### 2️⃣ **Network-Based Accessibility (Walking Distance)**
+The network-based approach evaluates park accessibility using pedestrian street networks, classifying buildings that are within 1,500 m walking distance of the nearest park and those that fall beyond the threshold (interpreted as limited access).
 **Objective:** Realistic walking accessibility using pedestrian street networks.
 - **Advantages:** Accounts for street connectivity and real walking routes
 - **Limitations:** Computationally more expensive
@@ -24,13 +26,14 @@ Urban green spaces are crucial for public health, climate resilience, and enviro
 ## 📂 Repository Structure
 
 ```
-├── main.py                     # Entry point for KD-Tree workflow
-├── NA_main.py                  # Entry point for Network Analysis workflow
+├── main.py                     # Entry point for KD-Tree workflow                
 ├── outputs/
 │   └── KDoutput/
-│       ├── accessibility_map.html
-│       └── accessibility_bar.png
-├── NA_outputs/                 # Created after running network analysis
+│   |    ├── accessibility_map.html
+│   |    └── accessibility_bar.png  
+|   |
+|   |── NA_outputs/      # Creates after running python main.py
+├                
 ├── src/
 │   └── park_accessibility/
 │       ├── kd_park_accessibility/
@@ -44,7 +47,12 @@ Urban green spaces are crucial for public health, climate resilience, and enviro
 │           ├── NA_analysis.py
 │           ├── NA_visualization.py
 │           └── __init__.py
-├── test/                       # Unit tests
+├── test/
+    ├── test_accessibility.py
+    ├── test_api.py
+    ├── test_downloader.py
+    ├── test_geo.py
+    └── test_kdtree.py                      # Unit tests
 ├── pyproject.toml              # Project configuration
 ├── poetry.lock                 # Dependency lock file
 └── README.md
@@ -61,8 +69,8 @@ curl -sSL https://install.python-poetry.org | python3 -
 
 ### 2️⃣ Clone and install dependencies
 ```bash
-git clone <repository-url>
-cd park-accessibility-analysis
+git clone https://github.com/pratistha-katwal/Park_Accessibility_
+cd Park_Accessibility_
 poetry install
 ```
 
@@ -83,12 +91,19 @@ python main.py
 
 ### **Network-Based Accessibility Analysis**
 ```bash
-python NA_main.py
+python main.py
 ```
-**Outputs:** Generated in `NA_outputs/` (created automatically)
-- Spatial datasets (GeoPackage format)
-- Interactive accessibility maps (.html)
-- Static summary plots (.png)
+**Outputs:** Generated in `outputs/NA_outputs/` (created automatically after run ning )
+│   ├── ams_boundary.gpkg
+│   ├── amsterdam_park_accessibility.html #Interactive map
+│   ├── amsterdam_park_accessibility_bar.png
+│   ├── amsterdam_park_accessibility_matplotlib.png
+│   ├── buildings_ams.gpkg
+│   ├── buildings_park_access_1500m.gpkg
+│   ├── distance_vs_access.png
+│   ├── parks_ams.gpkg
+│   ├── walking_edges_ams.gpkg
+│   └── walking_nodes_ams.gpkg
 
 ## 📊 Sample Results (Amsterdam - Network Analysis)
 
@@ -110,15 +125,9 @@ python NA_main.py
 open outputs/KDoutput/accessibility_map.html
 
 # Network Analysis results
-open NA_outputs/amsterdam_park_accessibility.html
+open outputs/NA_outputs/amsterdam_park_accessibility.html
 ```
 
-### Web Hosting via GitHub Pages
-The generated HTML outputs are static and can be hosted directly using GitHub Pages:
-
-1. Enable GitHub Pages in repository settings
-2. Set source to `/docs` folder or root directory
-3. Access via: `https://<username>.github.io/<repository-name>/outputs/KDoutput/accessibility_map.html`
 
 ## 🧪 Testing
 
@@ -127,11 +136,6 @@ Run unit tests to ensure robustness:
 pytest
 ```
 
-Tests cover:
-- KD-Tree logic and queries
-- Network computations
-- Geometric operations
-- Data downloading utilities
 
 ## 🛠 Technologies Used
 
@@ -160,23 +164,11 @@ Tests cover:
 - **Real Estate:** Evaluate neighborhood amenities
 - **Academic Research:** Comparative spatial analysis methodologies
 
-## 🤝 Contributing
 
-Contributions are welcome! Please:
-1. Fork the repository
-2. Create a feature branch
-3. Add tests for new functionality
-4. Submit a pull request
-
-## 📄 License
-
-[Specify your license here]
-
-## 📧 Contact
-
-[Your name/organization contact information]
 
 ---
 
-*This project enables evidence-based decision making for urban green space planning through robust spatial analysis and accessible visualizations.*
-```
+## 🔗 References
+- OpenStreetMap: https://www.openstreetmap.org
+- PDOK (Kadaster): https://www.pdok.nl
+- NetworkX library: https://networkx.org
