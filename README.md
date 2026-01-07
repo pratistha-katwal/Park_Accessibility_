@@ -1,93 +1,32 @@
-🌳 Park Accessibility Analysis using KD-Tree and Network Analysis
+🌳 Park Accessibility Analysis: KD-Tree vs Network Analysis
+A comprehensive Python toolkit for evaluating urban park accessibility using two complementary spatial approaches: KD-Tree-based Euclidean distance and network-based walking distance analysis. This project generates static, reproducible outputs suitable for web hosting and urban planning applications.
 
-This repository presents a comprehensive urban park accessibility analysis implemented in Python using two complementary spatial approaches:
-
-KD-Tree–based Euclidean accessibility
-
-Network-based walking accessibility
-
-The project generates static, reproducible outputs including interactive HTML maps and summary visualizations, which can be published as a website using GitHub Pages.
-
-📌 Project Motivation
-
-Access to urban green spaces is a key indicator of:
-
-Urban livability
-
-Public health
-
-Climate resilience
-
-Environmental equity
-
-This project evaluates how accessible parks are to buildings using both computationally efficient and realistic network-based methods, enabling comparison between simplified and real-world accessibility metrics.
+📋 Overview
+Urban green spaces are crucial for public health, climate resilience, and environmental equity. This project provides methods to quantify and visualize park accessibility at the building level, enabling comparisons between simplified Euclidean distances and realistic walking routes.
 
 🧠 Methodological Approaches
-1️⃣ KD-Tree–Based Accessibility (Euclidean Distance)
+1️⃣ KD-Tree-Based Accessibility (Euclidean Distance)
+Objective: Fast nearest-park identification using straight-line distances.
 
-Objective:
-Estimate the nearest park for each building using straight-line (Euclidean) distance.
+Advantages: Extremely fast, scales well to city-level datasets
 
-Why KD-Tree?
+Limitations: Doesn't account for street networks or barriers
 
-Extremely fast for large datasets
-
-Scales well to city-level analysis
-
-Suitable for exploratory and comparative studies
-
-Limitations:
-
-Does not account for street networks or barriers
-
-Represents idealized accessibility
-
-Key implementation:
-
-src/park_accessibility/kd_park_accessibility/
-├── downloader.py   # Data acquisition
-├── geo.py          # Geometry handling
-├── kdtree.py       # KD-Tree construction and queries
-├── service.py      # Accessibility logic
-└── viz.py          # Visualization (HTML / PNG)
-
-
-Outputs:
-
-Interactive accessibility map (HTML)
-
-Summary plots (PNG)
+Best for: Exploratory analysis and comparative studies
 
 2️⃣ Network-Based Accessibility (Walking Distance)
+Objective: Realistic walking accessibility using pedestrian street networks.
 
-Objective:
-Compute realistic walking accessibility to parks using pedestrian street networks.
+Advantages: Accounts for street connectivity and real walking routes
 
-Why Network Analysis?
+Limitations: Computationally more expensive
 
-Accounts for street connectivity
-
-Reflects real walking distances
-
-More suitable for planning and policy applications
-
-Trade-off:
-
-Computationally more expensive than KD-Tree
-
-Requires careful network preprocessing
-
-Key implementation:
-
-src/park_accessibility/NA_park_accessibility/
-├── NA_data_processing.py
-├── NA_analysis.py
-├── NA_visualization.py
-└── __init__.py
+Best for: Planning, policy applications, and detailed assessments
 
 📂 Repository Structure
-├── main.py                     # Entry point (KD-Tree workflow)
-├── NA_main.py                  # Entry point (Network Analysis workflow)
+text
+├── main.py                     # Entry point for KD-Tree workflow
+├── NA_main.py                  # Entry point for Network Analysis workflow
 ├── outputs/
 │   └── KDoutput/
 │       ├── accessibility_map.html
@@ -96,118 +35,95 @@ src/park_accessibility/NA_park_accessibility/
 ├── src/
 │   └── park_accessibility/
 │       ├── kd_park_accessibility/
+│       │   ├── downloader.py   # Data acquisition
+│       │   ├── geo.py          # Geometry handling
+│       │   ├── kdtree.py       # KD-Tree construction and queries
+│       │   ├── service.py      # Accessibility logic
+│       │   └── viz.py          # Visualization (HTML/PNG)
 │       └── NA_park_accessibility/
+│           ├── NA_data_processing.py
+│           ├── NA_analysis.py
+│           ├── NA_visualization.py
+│           └── __init__.py
 ├── test/                       # Unit tests
 ├── pyproject.toml              # Project configuration
 ├── poetry.lock                 # Dependency lock file
 └── README.md
-
 ⚙️ Installation & Setup
-
 This project uses Poetry for dependency management.
 
-1️⃣ Install dependencies
+1️⃣ Install Poetry (if not installed)
+bash
+curl -sSL https://install.python-poetry.org | python3 -
+2️⃣ Clone and install dependencies
+bash
+git clone <repository-url>
+cd park-accessibility-analysis
 poetry install
-
-2️⃣ Activate the virtual environment
+3️⃣ Activate the virtual environment
+bash
 poetry shell
-
 ▶️ Running the Analyses
-▶ KD-Tree Accessibility Analysis
+KD-Tree Accessibility Analysis
+bash
 python main.py
+Outputs: Generated in outputs/KDoutput/
 
+accessibility_map.html - Interactive map
 
-This will generate outputs in:
+accessibility_bar.png - Summary visualization
 
-outputs/KDoutput/
-
-▶ Network-Based Accessibility Analysis
+Network-Based Accessibility Analysis
+bash
 python NA_main.py
+Outputs: Generated in NA_outputs/ (created automatically)
 
-📊 Network Analysis Outputs
-
-After running the network analysis, a folder named NA_outputs/ is created containing:
-
-Spatial datasets
-
-Amsterdam administrative boundary
-
-Parks, buildings, and walking network
-
-Stored as Shapefiles and GeoPackage (.gpkg) files
-
-Visual outputs
+Spatial datasets (GeoPackage format)
 
 Interactive accessibility maps (.html)
 
 Static summary plots (.png)
 
-Example:
-
-NA_outputs/
-├── amsterdam_boundary.gpkg
-├── parks.gpkg
-├── buildings.gpkg
-├── walking_network.gpkg
-├── amsterdam_park_accessibility.html
-└── accessibility_summary.png
-
-🌍 Viewing the Interactive Map
-
-The interactive network-based accessibility map can be opened in a browser:
-
-open NA_outputs/amsterdam_park_accessibility.html
-
-
-The map allows users to explore:
-
-Walking distance to the nearest park
-
-Spatial disparities in park access
-
-Neighborhood-level accessibility patterns
-
-📈 Sample Results (Amsterdam – Network Analysis)
+📊 Sample Results (Amsterdam - Network Analysis)
 🏙 Data Overview
-
 Total buildings: 197,057
 
-Buildings with park access within 1500 m: 190,120
+Buildings with park access within 1500 m: 190,120 (96.5%)
 
-Buildings without park access within 1500 m: 6,937
+Buildings without park access within 1500 m: 6,937 (3.5%)
 
 📏 Distance Statistics (Walking Distance)
-
 Minimum distance to nearest park: 0.0 m
 
 Maximum distance to nearest park: 1,499.76 m
 
 Mean distance to nearest park: 469.95 m
 
-These results indicate that while most buildings have access to parks within walking distance, accessibility gaps remain, particularly at the urban periphery.
+🌍 Viewing Interactive Maps
+Local Viewing
+bash
+# KD-Tree results
+open outputs/KDoutput/accessibility_map.html
 
-🌐 Web Visualization (GitHub Pages)
+# Network Analysis results
+open NA_outputs/amsterdam_park_accessibility.html
+Web Hosting via GitHub Pages
+The generated HTML outputs are static and can be hosted directly using GitHub Pages:
 
-The generated HTML outputs are static and can be hosted directly using GitHub Pages.
+Enable GitHub Pages in repository settings
 
-Example URL:
+Set source to /docs folder or root directory
 
-https://<username>.github.io/<repository-name>/outputs/KDoutput/accessibility_map.html
-
-
-This enables:
-
-Easy sharing of results
-
-Use in reports, applications, and presentations
-
-No server or backend requirements
+Access via: https://<username>.github.io/<repository-name>/outputs/KDoutput/accessibility_map.html
 
 🧪 Testing
+Run unit tests to ensure robustness:
 
-Unit tests ensure robustness of:
+bash
+pytest
+Tests cover:
 
-KD-Tree logic
+KD-Tree logic and queries
 
 Network computations
 
@@ -215,29 +131,30 @@ Geometric operations
 
 Data downloading utilities
 
-Run tests with:
-
-pytest
-
 🛠 Technologies Used
-
-Python
-
-GeoPandas
-
-OSMnx
-
-NetworkX
-
-SciPy (KD-Tree)
-
-Folium / Plotly
-
-Poetry
-
-PyTest
-
+Technology	Purpose
+Python	Core programming language
+GeoPandas	Geospatial data manipulation
+OSMnx	Street network data retrieval
+NetworkX	Network analysis and routing
+SciPy	KD-Tree implementation
+Folium/Plotly	Interactive visualizations
+Poetry	Dependency management
+PyTest	Testing framework
 🔧 Development Notes
+Branch History: The KD-Tree and Network Analysis workflows were developed in separate Git branches for independent testing and optimization before merging into the main branch.
 
-The KD-Tree and Network Analysis workflows were initially developed in separate Git branches to allow independent testing, optimization, and validation.
-They were later merged into the main branch to provide a unified and reproducible accessibility analysis framework.
+Reproducibility: All outputs are static and deterministic, ensuring reproducible results across runs.
+
+Scalability: Both methods are designed to scale from neighborhood to city-level analysis.
+
+📈 Applications & Use Cases
+Urban Planning: Identify accessibility gaps and prioritize park development
+
+Public Health: Correlate park access with health outcomes
+
+Environmental Justice: Assess equitable distribution of green spaces
+
+Real Estate: Evaluate neighborhood amenities
+
+Academic Research: Comparative spatial analysis methodologies
