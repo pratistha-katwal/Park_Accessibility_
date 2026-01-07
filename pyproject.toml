@@ -1,28 +1,46 @@
-[project]
-name = "na-parkaccess"
+[tool.poetry]
+name = "park-accessibility"
 version = "0.1.0"
-description = "Park accessibility analysis for Amsterdam"
+description = "Amsterdam park accessibility analysis (KD-tree + network-based walking distance)"
 authors = [
-    {name = "Pratistha Katwal",email = "pratisthaktwl1@gmail.com"},
-    {name = "Anupriya",email = "anupriyageog16@gmail.com"}
+  "Pratistha Katwal <pratisthaktwl1@gmail.com>",
+  "Anupriya <anupriyageog16@gmail.com>"
 ]
 readme = "README.md"
-requires-python = ">=3.11,<3.14"
-dependencies = [
-    "geopandas (>=1.1.2,<2.0.0)",
-    "shapely (>=2.1.2,<3.0.0)",
-    "osmnx (>=2.0.7,<3.0.0)",
-    "networkx (>=3.6.1,<4.0.0)",
-    "folium (>=0.20.0,<0.21.0)",
-    "matplotlib (>=3.10.8,<4.0.0)",
-    "requests (>=2.32.5,<3.0.0)",
-    "pyproj (>=3.7.2,<4.0.0)",
-    "fiona (>=1.10.1,<2.0.0)",
-    "rtree (>=1.4.1,<2.0.0)"
+
+packages = [
+  { include = "park_accessibility", from = "src" },
+  { include = "na_parkaccess", from = "src" }
 ]
 
-[tool.poetry]
-packages = [{include = "na_parkaccess", from = "src"}]
+[tool.poetry.dependencies]
+python = ">=3.11,<3.14"
+
+# Common
+requests = ">=2.32.5,<3.0.0"
+folium = ">=0.20.0,<0.21.0"
+matplotlib = ">=3.10.8,<4.0.0"
+
+# KD-tree / API
+numpy = "*"
+scipy = "*"
+fastapi = "*"
+uvicorn = "*"
+
+# Network analysis
+geopandas = ">=1.1.2,<2.0.0"
+shapely = ">=2.1.2,<3.0.0"
+osmnx = ">=2.0.7,<3.0.0"
+networkx = ">=3.6.1,<4.0.0"
+pyproj = ">=3.7.2,<4.0.0"
+fiona = ">=1.10.1,<2.0.0"
+rtree = ">=1.4.1,<2.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "*"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
