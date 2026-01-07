@@ -1,4 +1,4 @@
-```markdown
+
 # 🌳 Park Accessibility Analysis: KD-Tree vs Network Analysis
 
 A comprehensive Python toolkit for evaluating urban park accessibility using two complementary spatial approaches: **KD-Tree-based Euclidean distance** and **network-based walking distance** analysis. This project generates static, reproducible outputs suitable for web hosting and urban planning applications.
