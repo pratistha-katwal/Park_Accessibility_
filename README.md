@@ -25,11 +25,13 @@ The network-based approach evaluates park accessibility using pedestrian street 
 - **Limitations:** Computationally more expensive
 - **Best for:** Planning, policy applications, and detailed assessments
 
-### Data Sources
-- **Administrative boundary**: PDOK (Kadaster)
-- **Parks**: OpenStreetMap (`leisure=park`)
-- **Buildings**: OpenStreetMap (`building=*`)
-- **Walking network**: OpenStreetMap pedestrian network
+## 📍 Data Sources
+
+- **Administrative boundaries:** PDOK (Kadaster, Netherlands) – municipality boundaries via WFS
+- **Parks:** OpenStreetMap (`leisure=park`)
+- **Buildings:** OpenStreetMap (`building=*`)
+- **Walking network:** OpenStreetMap pedestrian street network
+
 
 ## 📂 Repository Structure
 
