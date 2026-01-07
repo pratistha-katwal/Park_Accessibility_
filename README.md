@@ -1,4 +1,4 @@
-
+```markdown
 # 🌳 Park Accessibility Analysis: KD-Tree and Network Analysis
 
 This repository presents a Python toolkit for evaluating urban park accessibility using two spatial approaches: **KD-Tree-based Euclidean distance** and **network-based walking distance** analysis. This project generates reproducible outputs suitable for urban planning applications.
@@ -11,18 +11,20 @@ Urban green spaces are crucial for public health, climate resilience, and enviro
 
 ### 1️⃣ **KD-Tree-Based Accessibility (Euclidean Distance)**
 The KD-tree approach is used to identify and visualize parks that lie within a 500 m straight-line (Euclidean) distance from residential buildings.
+
 **Objective:** Fast identification of accessible parks using straight-line distances.
-- **Advantages:**  Extremely fast O(log n) queries, scales to city-level datasets
+- **Advantages:** Extremely fast O(log n) queries, scales to city-level datasets
 - **Limitations:** Doesn't account for street networks or barriers
 - **Best for:** Exploratory analysis and comparative studies
 
 ### 2️⃣ **Network-Based Accessibility (Walking Distance)**
 The network-based approach evaluates park accessibility using pedestrian street networks, classifying buildings within 1,500 m walking distance of the nearest park and those that fall beyond the threshold (interpreted as having limited access).
+
 **Objective:** Realistic walking accessibility using pedestrian street networks.
 - **Advantages:** Accounts for street connectivity and real walking routes
 - **Limitations:** Computationally more expensive
 - **Best for:** Planning, policy applications, and detailed assessments
-  
+
 ### Data Sources
 - **Administrative boundary**: PDOK (Kadaster)
 - **Parks**: OpenStreetMap (`leisure=park`)
@@ -91,6 +93,7 @@ poetry shell
 ```bash
 python main.py
 ```
+
 **Outputs:** Generated in `outputs/KDoutput/`
 - `accessibility_map.html` - Interactive map
 - `accessibility_bar.png` - Summary visualization
@@ -99,7 +102,9 @@ python main.py
 ```bash
 python main.py
 ```
-**Outputs:** Generated in `outputs/NA_outputs/` (created automatically after run ning )
+
+**Outputs:** Generated in `outputs/NA_outputs/` (created automatically after running)
+```
 │   ├── ams_boundary.gpkg
 │   ├── amsterdam_park_accessibility.html #Interactive map
 │   ├── amsterdam_park_accessibility_bar.png
@@ -110,6 +115,7 @@ python main.py
 │   ├── parks_ams.gpkg
 │   ├── walking_edges_ams.gpkg
 │   └── walking_nodes_ams.gpkg
+```
 
 ## 📊 Results Interpretation - Amsterdam Case Study Results
 
@@ -156,17 +162,15 @@ pytest
 
 ## 🔧 Development Notes
 
-Project Architecture
-Modular Design: Separate modules for KD-Tree and Network Analysis
+**Project Architecture**
+- **Modular Design:** Separate modules for KD-Tree and Network Analysis
+- **Data Pipeline:** Automated data download → processing → analysis → visualization
+- **Reproducibility:** Deterministic outputs with version-controlled dependencies
 
-Data Pipeline: Automated data download → processing → analysis → visualization
+**Extensibility**
+- **City Selection:** Modify `CITY_NAME` in main.py for different locations
+- **Threshold Adjustment:** Customize distance thresholds (500m/1500m)
 
-Reproducibility: Deterministic outputs with version-controlled dependencies
-
-Extensibility
-City Selection: Modify CITY_NAME in main.py for different locations
-
-Threshold Adjustment: Customize distance thresholds (500m/1500m)
 - **Branch History:** The KD-Tree and Network Analysis workflows were developed in separate Git branches for independent testing and optimization before merging into the main branch.
 - **Reproducibility:** All outputs are static and deterministic, ensuring reproducible results across runs.
 - **Scalability:** Both methods are designed to scale from neighborhood to city-level analysis.
@@ -179,11 +183,10 @@ Threshold Adjustment: Customize distance thresholds (500m/1500m)
 - **Real Estate:** Evaluate neighborhood amenities
 - **Academic Research:** Comparative spatial analysis methodologies
 
-
-
 ---
 
 ## 🔗 References
 - OpenStreetMap: https://www.openstreetmap.org
 - PDOK (Kadaster): https://www.pdok.nl
 - NetworkX library: https://networkx.org
+```
