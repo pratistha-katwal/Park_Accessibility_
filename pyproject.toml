@@ -9,9 +9,9 @@ authors = [
 readme = "README.md"
 
 packages = [
-  { include = "park_accessibility", from = "src" },
-  { include = "na_parkaccess", from = "src" }
+  { include = "park_accessibility", from = "src" }
 ]
+
 
 [tool.poetry.dependencies]
 python = ">=3.11,<3.14"
