@@ -2,7 +2,7 @@
 
 #  Park Accessibility Analysis: KD-Tree and Network Analysis
 <p align="center">
-  <img src="outputs/KDoutput/Screenshot 2026-01-09 at 21.53.56.png" alt="Diagram" width="600"/>
+  <img src="outputs/CoverPic.png" alt="Diagram" width="600"/>
 </p>
 
 
