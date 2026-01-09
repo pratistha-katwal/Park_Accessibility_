@@ -1,16 +1,16 @@
 # ==============================
 # Generated outputs (DO NOT TRACK)
 # ==============================
-# outputs/
-# NA_outputs/
-# *.gpkg
-# *.geojson
-# *.shp
-# *.dbf
-# *.shx
-# *.cpg
-# *.prj
-# *.html  
+outputs/
+NA_outputs/
+*.gpkg
+*.geojson
+*.shp
+*.dbf
+*.shx
+*.cpg
+*.prj
+*.html  
 
 # ==============================
 # OSMnx / requests cache
