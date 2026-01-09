@@ -2,7 +2,7 @@
 
 #  Park Accessibility Analysis: KD-Tree and Network Analysis
 <p align="center">
-  <img src="outputs/CoverPic.png" alt="Diagram" width="600"/>
+  <img src="outputs/NA_outputs/amsterdam_park_accessibility.png" alt="Diagram" width="600"/>
 </p>
 
 
