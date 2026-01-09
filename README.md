@@ -41,39 +41,41 @@ The network-based approach evaluates park accessibility using pedestrian street 
 ## 📂 Repository Structure
 
 ```
-├── main.py                     # main file             
-├── outputs/                    # outputs of the analysis
-│   └── KDoutput/
-│   |    ├── accessibility_map.html
-│   |    └── accessibility_bar.png  
-|   |
-|   |── NA_outputs/      # Output of Network analysis Creates after running python main.py
-├                
-├── src/
-│   └── park_accessibility/
-│       ├── kd_park_accessibility/
-│       │   ├── downloader.py   # Data acquisition
-│       │   ├── geo.py          # Geometry handling
-│       │   ├── kdtree.py       # KD-Tree construction and queries
-│       │   ├── service.py      # Accessibility logic
-│       │   └── viz.py          # Visualization (HTML/PNG)
-│       └── NA_park_accessibility/
-│           ├── NA_data_processing.py #data acquisition
-│           ├── NA_analysis.py #data processing
-│           ├── NA_visualization.py #data visualization
-│           └── __init__.py
-├── test/
+├── README.md
+├── main.py     #main file
+├── outputs     #Outputs
+│   ├── KDoutput
+│   │   ├── accessibility_bar.png
+│   │   └── accessibility_map.html
+│   └── NA_outputs                      #html file will be created after running main.py
+│       ├── amsterdam_park_accessibility.png
+│       └── amsterdam_park_accessibility_matplotlib.png
+├── poetry.lock
+├── pyproject.toml
+├── src
+│   └── park_accessibility
+│       ├── NA_park_accessibility
+│       │   ├── NA_analysis.py                #Data Processing
+│       │   ├── NA_data_processing.py         #Data Acquisition
+│       │   ├── NA_visualization.py           #Data Visualization
+│       │   └── __init__.py
+│       ├── __init__.py
+│       └── kd_park_accessibility
+│           ├── __init__.py
+│           ├── downloader.py
+│           ├── geo.py                      # Geometry handling
+│           ├── kdtree.py                    # KD-Tree construction and queries
+│           ├── service.py
+│           └── viz.py                      # Accessibility logic
+└── test  #tests
     ├── test_accessibility.py
     ├── test_api.py
     ├── test_downloader.py
     ├── test_geo.py
-    └── test_kdtree.py                      # Unit tests
-├── pyproject.toml              # Project configuration
-├── poetry.lock                 # Dependency lock file
-└── README.md
-```
+    └── test_kdtree.py
 
-## ⚙️ Installation & Setup
+
+```
 
 This project uses **Poetry** for dependency management.
 
