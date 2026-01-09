@@ -36,13 +36,13 @@ The network-based approach evaluates park accessibility using pedestrian street 
 ## 📂 Repository Structure
 
 ```
-├── main.py                     # Entry point for KD-Tree workflow                
-├── outputs/
+├── main.py                     # main file             
+├── outputs/                    # outputs of the analysis
 │   └── KDoutput/
 │   |    ├── accessibility_map.html
 │   |    └── accessibility_bar.png  
 |   |
-|   |── NA_outputs/      # Creates after running python main.py
+|   |── NA_outputs/      # Output of Network analysis Creates after running python main.py
 ├                
 ├── src/
 │   └── park_accessibility/
@@ -53,9 +53,9 @@ The network-based approach evaluates park accessibility using pedestrian street 
 │       │   ├── service.py      # Accessibility logic
 │       │   └── viz.py          # Visualization (HTML/PNG)
 │       └── NA_park_accessibility/
-│           ├── NA_data_processing.py
-│           ├── NA_analysis.py
-│           ├── NA_visualization.py
+│           ├── NA_data_processing.py #data acquisition
+│           ├── NA_analysis.py #data processing
+│           ├── NA_visualization.py #data visualization
 │           └── __init__.py
 ├── test/
     ├── test_accessibility.py
