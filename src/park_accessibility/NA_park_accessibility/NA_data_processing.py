@@ -124,13 +124,13 @@ class ClipData:
 
 
 def get_ams_data():
-    os.makedirs("NA_outputs", exist_ok=True)
+    os.makedirs("outputs/NA_outputs", exist_ok=True)
 
     files = [
-        "NA_outputs/ams_boundary.gpkg",
-        "NA_outputs/parks_ams.gpkg",
-        "NA_outputs/buildings_ams.gpkg",
-        "NA_outputs/walking_edges_ams.gpkg",
+        "outputs/NA_outputs/ams_boundary.gpkg",
+        "outputs/NA_outputs/parks_ams.gpkg",
+        "outputs/NA_outputs/buildings_ams.gpkg",
+        "outputs/NA_outputs/walking_edges_ams.gpkg",
     ]
 
     # check if all files exist
