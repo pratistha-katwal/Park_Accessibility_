@@ -124,13 +124,13 @@ class ClipData:
 
 
 def get_ams_data():
-    os.makedirs("NA_outputs", exist_ok=True)
+    os.makedirs("outputs/NA_outputs", exist_ok=True)
 
     files = [
-        "NA_outputs/ams_boundary.gpkg",
-        "NA_outputs/parks_ams.gpkg",
-        "NA_outputs/buildings_ams.gpkg",
-        "NA_outputs/walking_edges_ams.gpkg",
+        "outputs/NA_outputs/ams_boundary.gpkg",
+        "outputs/NA_outputs/parks_ams.gpkg",
+        "outputs/NA_outputs/buildings_ams.gpkg",
+        "outputs/NA_outputs/walking_edges_ams.gpkg",
     ]
 
     # check if all files exist
@@ -145,7 +145,7 @@ def get_ams_data():
         boundary_json = boundary.download_data()
         ams_boundary = boundary.to_geodataframe(boundary_json)
         ams_boundary = boundary.filter_amsterdam()
-        ams_boundary.to_file("NA_outputs/ams_boundary.gpkg")
+        ams_boundary.to_file("outputs/NA_outputs/ams_boundary.gpkg")
 
         # Download OSM data
         parks = Parks.get_parks()
@@ -160,9 +160,9 @@ def get_ams_data():
         walking_edges_ams = ClipData.clip_to_amsterdam(walking_edges, ams_boundary)
 
         # Save
-        parks_ams.to_file("NA_outputs/parks_ams.gpkg", driver="GPKG")
-        buildings_ams.to_file("NA_outputs/buildings_ams.gpkg", driver="GPKG")
-        walking_nodes_ams.to_file("NA_outputs/walking_nodes_ams.gpkg", driver="GPKG")
-        walking_edges_ams.to_file("NA_outputs/walking_edges_ams.gpkg", driver="GPKG")
+        parks_ams.to_file("outputs/NA_outputs/parks_ams.gpkg", driver="GPKG")
+        buildings_ams.to_file("outputs/NA_outputs/buildings_ams.gpkg", driver="GPKG")
+        walking_nodes_ams.to_file("outputs/NA_outputs/walking_nodes_ams.gpkg", driver="GPKG")
+        walking_edges_ams.to_file("outputs/NA_outputs/walking_edges_ams.gpkg", driver="GPKG")
 
     return ams_boundary, parks_ams, buildings_ams, walking_edges_ams

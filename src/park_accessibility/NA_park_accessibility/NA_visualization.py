@@ -128,7 +128,7 @@ class FoliumVisualization:
 
 
         m.get_root().html.add_child(folium.Element(legend_html))
-        m.save("NA_outputs/amsterdam_park_accessibility.html")
+        m.save("outputs/NA_outputs/amsterdam_park_accessibility.html")
         m
         return m
 
@@ -158,9 +158,67 @@ class MatplotlibVisualization:
         ax.set_ylabel("Number of Households")
         ax.set_title("Household Access to Parks (1500 m Walking Distance)")
         ax.grid(axis="y", linestyle="--", alpha=0.4)
-        fig.savefig("NA_outputs/amsterdam_park_accessibility_bar.png", dpi=300)
+        fig.savefig("outputs/NA_outputs/amsterdam_park_accessibility_bar.png")
 
         plt.tight_layout()
         plt.show()
         return fig
+    
+    @staticmethod
+    def plot_accessibility_vs_distance(
+        building_gdf,
+        save_path="outputs/NA_outputs/pairwise_visualization.png"
+    ):
+        import matplotlib.pyplot as plt
+        import pandas as pd
+        import numpy as np
 
+        df = building_gdf.copy()
+        df["dist_clean"] = df["dist_to_park_m"].fillna(2000)
+
+        # 
+        bins = np.arange(5, 1601, 50)
+        df["dist_bin"] = pd.cut(df["dist_clean"], bins=bins, right=False)
+
+        counts = (
+            df.groupby(["dist_bin", "park_access_1500m"])
+            .size()
+            .unstack(fill_value=0)
+        )
+
+        #  column access
+        accessible = counts.get(True, 0)
+        not_accessible = counts.get(False, 0)
+
+        bin_left_edges = [interval.left for interval in counts.index]
+
+        fig, ax = plt.subplots(figsize=(10, 6))
+
+        ax.bar(
+            bin_left_edges,
+            accessible,
+            width=50,
+            align="edge",
+            alpha=0.7,
+            label="Accessible"
+        )
+
+        ax.bar(
+            bin_left_edges,
+            not_accessible,
+            width=50,
+            align="edge",
+            bottom=accessible,
+            alpha=0.7,
+            label="Not accessible"
+        )
+
+        ax.set_xlabel("Distance to Nearest Park (m)")
+        ax.set_ylabel("Number of Buildings")
+        ax.set_title("Buildings vs Distance to Nearest Park (≤1500 m)")
+        ax.legend()
+        ax.grid(alpha=0.3)
+
+        plt.tight_layout()
+        plt.savefig(save_path)
+        return fig
