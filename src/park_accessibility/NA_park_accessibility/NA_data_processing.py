@@ -160,9 +160,9 @@ def get_ams_data():
         walking_edges_ams = ClipData.clip_to_amsterdam(walking_edges, ams_boundary)
 
         # Save
-        parks_ams.to_file("NA_outputs/parks_ams.gpkg", driver="GPKG")
-        buildings_ams.to_file("NA_outputs/buildings_ams.gpkg", driver="GPKG")
-        walking_nodes_ams.to_file("NA_outputs/walking_nodes_ams.gpkg", driver="GPKG")
-        walking_edges_ams.to_file("NA_outputs/walking_edges_ams.gpkg", driver="GPKG")
+        parks_ams.to_file("outputs/NA_outputs/parks_ams.gpkg", driver="GPKG")
+        buildings_ams.to_file("outputs/NA_outputs/buildings_ams.gpkg", driver="GPKG")
+        walking_nodes_ams.to_file("outputs/NA_outputs/walking_nodes_ams.gpkg", driver="GPKG")
+        walking_edges_ams.to_file("outputs/NA_outputs/walking_edges_ams.gpkg", driver="GPKG")
 
     return ams_boundary, parks_ams, buildings_ams, walking_edges_ams
