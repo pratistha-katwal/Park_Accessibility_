@@ -145,7 +145,7 @@ def get_ams_data():
         boundary_json = boundary.download_data()
         ams_boundary = boundary.to_geodataframe(boundary_json)
         ams_boundary = boundary.filter_amsterdam()
-        ams_boundary.to_file("NA_outputs/ams_boundary.gpkg")
+        ams_boundary.to_file("outputs/NA_outputs/ams_boundary.gpkg")
 
         # Download OSM data
         parks = Parks.get_parks()
