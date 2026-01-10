@@ -45,10 +45,10 @@ def main():
     # -------------------------------
     # Save output
     # -------------------------------
-    os.makedirs("NA_outputs", exist_ok=True)
-    if not os.path.exists("NA_outputs/buildings_park_access_1500m.gpkg"):
+    os.makedirs("outputs/NA_outputs", exist_ok=True)
+    if not os.path.exists("outputs/NA_outputs/buildings_park_access_1500m.gpkg"):
         accessibility_gdf.to_file(
-            "NA_outputs/buildings_park_access_1500m.gpkg",
+            "outputs/NA_outputs/buildings_park_access_1500m.gpkg",
             driver="GPKG"
         )
 
@@ -63,11 +63,14 @@ def main():
     )
 
     # Open the map automatically
-    map_path = os.path.abspath("NA_outputs/amsterdam_park_accessibility.html")
+    map_path = os.path.abspath("outputs/NA_outputs/amsterdam_park_accessibility.html")
     webbrowser.open(f"file://{map_path}")
 
     fig = MatplotlibVisualization.plot_map(building_gdf=accessibility_gdf)
-    fig.savefig("NA_outputs/amsterdam_park_accessibility_matplotlib.png")
+    fig.savefig("outputs/NA_outputs/amsterdam_park_accessibility_matplotlib.png")
+
+    fig2= MatplotlibVisualization.plot_accessibility_vs_distance(building_gdf=accessibility_gdf)
+    fig2.savefig("outputs/NA_outputs/pairwise_visualization.png")
     print("✅ Map generated and saved to NA_outputs/amsterdam_park_accessibility.html")
 if __name__ == "__main__":
     main()
